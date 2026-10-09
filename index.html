@@ -27,18 +27,7 @@
     <div id="modal-root"></div>
     <div id="toast-root" aria-live="polite"></div>
 
-    <script>
-      // Módulos ES6 não carregam quando o arquivo é aberto diretamente (file://).
-      // Nesse caso, orienta como iniciar o servidor local.
-      if (location.protocol === "file:") {
-        document.getElementById("boot").innerHTML =
-          "<h1>Vieira | Gestão Operacional</h1>" +
-          "<p>Este protótipo usa módulos JavaScript e precisa ser aberto por um servidor local simples (o navegador bloqueia módulos abertos diretamente do disco).</p>" +
-          "<p><strong>Windows:</strong> dê dois cliques em <code>iniciar-demo.bat</code> na pasta do projeto.</p>" +
-          "<p><strong>Qualquer sistema com Node.js:</strong></p><pre>node servidor.js --abrir</pre>" +
-          "<p>Depois acesse <code>http://localhost:8080</code>. Detalhes no arquivo <code>README.md</code>.</p>";
-      }
-    </script>
+    <script src="js/boot.js"></script>
     <script type="module" src="js/app.js"></script>
   </body>
 </html>

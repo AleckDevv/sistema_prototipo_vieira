@@ -47,6 +47,33 @@ A interface é responsiva de 320 px (celular pequeno) a monitores largos, sem ro
 
 Além dos pontos de quebra, `js/responsivo.js` mede o espaço real: se uma tabela não couber no contêiner, ela passa a ser exibida em cartões; se as abas não couberem, viram uma grade.
 
+### Publicar na Vercel
+
+O projeto é um site estático: **não tem etapa de build nem dependências**. A Vercel publica a pasta como está.
+
+**Pelo GitHub (recomendado):**
+
+1. Envie as alterações para o repositório (`git push`).
+2. Em [vercel.com/new](https://vercel.com/new), importe o repositório.
+3. Em *Framework Preset*, deixe **Other**. Não preencha *Build Command* nem *Output Directory*.
+4. Clique em **Deploy**. A cada novo `git push`, a Vercel publica a versão atualizada.
+
+**Pela linha de comando** (na pasta do projeto, com Node.js instalado):
+
+```bash
+npx vercel          # primeira vez: faz login e cria uma versão de pré-visualização
+npx vercel --prod   # publica na URL de produção
+```
+
+O que já vem configurado:
+
+- `vercel.json`: cabeçalhos de segurança (CSP restrita a arquivos do próprio site, `nosniff`, bloqueio de incorporação em outros sites) e `noindex`, para a demonstração não aparecer em buscadores.
+- `.vercelignore`: `servidor.js`, `iniciar-demo.bat` e o README não são publicados.
+- `404.html`: página exibida para endereços inexistentes.
+- As rotas usam `#` (ex.: `/#/compras/SC-0013`), então links diretos funcionam sem configuração extra no servidor.
+
+Na versão publicada, os dados continuam **no navegador de cada visitante** (LocalStorage): cada pessoa vê a própria cópia da demonstração, e o que um visitante altera não aparece para os outros. Qualquer pessoa com o link consegue abrir a demonstração. Os dados são fictícios, mas compartilhe o endereço só com quem deve vê-lo.
+
 ---
 
 ## 2. Perfis de demonstração
@@ -154,10 +181,14 @@ Navegação completa, perfis com permissões simuladas, cadastros e edições, f
 
 ```
 index.html               Página única (shell da aplicação)
+404.html                 Página para endereços inexistentes (publicação)
+vercel.json              Cabeçalhos de segurança e noindex na Vercel
+.vercelignore            Arquivos locais que não são publicados
 servidor.js              Servidor local sem dependências
 iniciar-demo.bat         Atalho para Windows
 css/styles.css           Identidade visual, responsividade e impressão
 assets/favicon.svg       Ícone da aba
+js/boot.js               Aviso ao abrir o index.html direto do disco
 js/app.js                Inicialização, menu, cabeçalho, perfis, notificações, restauração
 js/router.js             Rotas por hash (#/pagina/identificador?filtro=valor)
 js/responsivo.js         Ajuste automático de tabelas (cartões) e abas (grade) ao espaço disponível

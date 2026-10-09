@@ -1,0 +1,7 @@
+# Arquivos usados apenas para executar a demonstração localmente.
+# Não são necessários (nem desejados) na publicação da Vercel.
+servidor.js
+iniciar-demo.bat
+README.md
+.gitignore
+.vercelignore
