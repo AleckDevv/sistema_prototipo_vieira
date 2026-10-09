@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vieira | Gestão Operacional</title>
+    <meta
+      name="description"
+      content="Protótipo de demonstração do Sistema de Gestão Operacional de Frota — Vieira Serviços e Transportes. Dados fictícios."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="boot" id="boot">
+        <h1>Vieira | Gestão Operacional</h1>
+        <p>Carregando a demonstração…</p>
+        <noscript
+          ><p>
+            Esta demonstração precisa do JavaScript habilitado no navegador.
+          </p></noscript
+        >
+      </div>
+    </div>
+    <div id="modal-root"></div>
+    <div id="toast-root" aria-live="polite"></div>
+
+    <script>
+      // Módulos ES6 não carregam quando o arquivo é aberto diretamente (file://).
+      // Nesse caso, orienta como iniciar o servidor local.
+      if (location.protocol === "file:") {
+        document.getElementById("boot").innerHTML =
+          "<h1>Vieira | Gestão Operacional</h1>" +
+          "<p>Este protótipo usa módulos JavaScript e precisa ser aberto por um servidor local simples (o navegador bloqueia módulos abertos diretamente do disco).</p>" +
+          "<p><strong>Windows:</strong> dê dois cliques em <code>iniciar-demo.bat</code> na pasta do projeto.</p>" +
+          "<p><strong>Qualquer sistema com Node.js:</strong></p><pre>node servidor.js --abrir</pre>" +
+          "<p>Depois acesse <code>http://localhost:8080</code>. Detalhes no arquivo <code>README.md</code>.</p>";
+      }
+    </script>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
