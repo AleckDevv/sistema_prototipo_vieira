@@ -16,6 +16,7 @@ import { esc, iniciais } from "./utils.js";
 import { toast, confirmar, fecharTodosModais, executar } from "./ui.js";
 import { rotaAtual } from "./router.js";
 import { iniciarAjusteResponsivo } from "./responsivo.js";
+import { iniciarTema, alternarTema } from "./tema.js";
 
 import dashboard from "./modules/dashboard.js";
 import veiculos from "./modules/veiculos.js";
@@ -102,6 +103,7 @@ function montarEstrutura() {
         </div>
         <div class="topbar-actions">
           <span class="demo-pill" title="Os números exibidos são fictícios e servem apenas para demonstração.">Demonstração · dados fictícios</span>
+          <button type="button" class="icon-btn theme-btn" id="btn-tema" data-alternar-tema aria-pressed="false" aria-label="Usar modo escuro" title="Usar modo escuro">${icone("lua", "icon-lua")}${icone("sol", "icon-sol")}</button>
           <div class="dropdown" id="dd-notificacoes">
             <button type="button" class="icon-btn bell-btn" id="btn-notificacoes" aria-haspopup="true" aria-expanded="false" aria-label="Notificações"></button>
             <div class="dropdown-menu dropdown-right notif-menu" id="menu-notificacoes" hidden></div>
@@ -124,6 +126,10 @@ function montarEstrutura() {
   document
     .getElementById("btn-restaurar")
     .addEventListener("click", restaurarDemonstracao);
+  document.getElementById("btn-tema").addEventListener("click", () => {
+    const tema = alternarTema();
+    toast(tema === "dark" ? "Modo escuro ativado." : "Modo claro ativado.", "info");
+  });
   document.getElementById("btn-notificacoes").addEventListener("click", (e) => {
     e.stopPropagation();
     alternarDropdown("notificacoes");
@@ -327,6 +333,7 @@ function iniciar() {
 
   montarEstrutura();
   iniciarAjusteResponsivo();
+  iniciarTema();
   store.assinar(() => renderizarTudo({ navegacao: false }));
   window.addEventListener("hashchange", () => {
     fecharTodosModais();

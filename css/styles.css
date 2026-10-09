@@ -45,11 +45,32 @@
   --seg-warning: #d9a032;
   --seg-neutral: #a3acb9;
 
+  /* Fundos sólidos com texto branco (botões, chips e marcadores ativos). */
+  --primary-strong: #1d3a5f;
+  --primary-strong-hover: #162e4d;
+  --on-primary: #ffffff;
+  --danger-strong: #ad3434;
+  --danger-strong-hover: #952b2b;
+  --success-strong: #2e7a55;
+  --success-strong-hover: #256646;
+
+  /* Detalhes de superfície que mudam entre os temas. */
+  --row-highlight: #fffcf3;
+  --notice-info-text: #24496f;
+  --notice-warning-text: #6e4c0b;
+  --notice-danger-text: #8a2a2a;
+  --warning-icon: #b88317;
+  --backdrop: rgba(16, 24, 40, 0.42);
+  --overlay: rgba(16, 24, 40, 0.35);
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23667085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+
   --radius: 10px;
   --radius-sm: 6px;
   --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.04);
   --shadow-md: 0 12px 32px rgba(16, 24, 40, 0.12);
   --focus: 0 0 0 3px rgba(47, 95, 150, 0.25);
+
+  color-scheme: light;
 
   --font: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --mono: "JetBrains Mono", "Cascadia Mono", Consolas, "Courier New", monospace;
@@ -175,8 +196,8 @@ textarea {
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: var(--primary);
-  color: #fff;
+  background: var(--primary-strong);
+  color: var(--on-primary);
   display: grid;
   place-items: center;
   font-weight: 700;
@@ -480,8 +501,8 @@ textarea {
   height: 17px;
   padding: 0 4px;
   border-radius: 999px;
-  background: var(--danger);
-  color: #fff;
+  background: var(--danger-strong);
+  color: var(--on-primary);
   font-size: 10.5px;
   font-weight: 600;
   display: grid;
@@ -617,12 +638,12 @@ textarea {
 }
 
 .btn-primary {
-  background: var(--primary);
-  color: #fff;
+  background: var(--primary-strong);
+  color: var(--on-primary);
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: var(--primary-hover);
+  background: var(--primary-strong-hover);
 }
 
 .btn-secondary {
@@ -646,21 +667,21 @@ textarea {
 }
 
 .btn-danger {
-  background: var(--danger);
-  color: #fff;
+  background: var(--danger-strong);
+  color: var(--on-primary);
 }
 
 .btn-danger:hover:not(:disabled) {
-  background: #952b2b;
+  background: var(--danger-strong-hover);
 }
 
 .btn-success {
-  background: var(--success);
-  color: #fff;
+  background: var(--success-strong);
+  color: var(--on-primary);
 }
 
 .btn-success:hover:not(:disabled) {
-  background: #256646;
+  background: var(--success-strong-hover);
 }
 
 .btn-sm {
@@ -815,13 +836,13 @@ textarea {
 }
 
 .chip.is-active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
+  background: var(--primary-strong);
+  border-color: var(--primary-strong);
+  color: var(--on-primary);
 }
 
 .chip.is-active strong {
-  color: #fff;
+  color: var(--on-primary);
 }
 
 /* ---------- Cartões, seções e grades ---------- */
@@ -1122,7 +1143,7 @@ textarea {
 select {
   padding-right: 28px;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23667085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: var(--select-arrow);
   background-repeat: no-repeat;
   background-position: right 10px center;
 }
@@ -1435,8 +1456,8 @@ input[readonly] {
 }
 
 .segmented button.is-active {
-  background: var(--primary);
-  color: #fff;
+  background: var(--primary-strong);
+  color: var(--on-primary);
 }
 
 /* ---------- Tabelas ---------- */
@@ -1509,7 +1530,7 @@ input[readonly] {
 }
 
 .table tr.row-highlight td {
-  background: #fffcf3;
+  background: var(--row-highlight);
 }
 
 .table tr.row-warning td:first-child {
@@ -1617,6 +1638,10 @@ input[readonly] {
   background: var(--primary-50);
 }
 
+.matrix th.col-current {
+  color: var(--primary);
+}
+
 .perm-yes {
   color: var(--success);
   display: inline-grid;
@@ -1628,7 +1653,11 @@ input[readonly] {
 }
 
 .perm-no {
-  color: var(--border-strong);
+  color: var(--muted);
+}
+
+.matrix .col-current .perm-no {
+  color: var(--text-2);
 }
 
 /* ---------- Avisos ---------- */
@@ -1662,17 +1691,17 @@ input[readonly] {
 .notice-info {
   background: var(--info-bg);
   border-color: var(--info-border);
-  color: #24496f;
+  color: var(--notice-info-text);
 }
 .notice-warning {
   background: var(--warning-bg);
   border-color: var(--warning-border);
-  color: #6e4c0b;
+  color: var(--notice-warning-text);
 }
 .notice-danger {
   background: var(--danger-bg);
   border-color: var(--danger-border);
-  color: #8a2a2a;
+  color: var(--notice-danger-text);
 }
 .notice-muted {
   background: var(--surface-2);
@@ -1986,7 +2015,7 @@ a.hbar-label:hover {
   color: var(--danger);
 }
 .alert-warning > .icon:first-child {
-  color: #b88317;
+  color: var(--warning-icon);
 }
 .alert-info > .icon:first-child {
   color: var(--info);
@@ -2128,9 +2157,9 @@ a.hbar-label:hover {
 }
 
 .stepper li.is-done .step-dot {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
+  background: var(--primary-strong);
+  border-color: var(--primary-strong);
+  color: var(--on-primary);
 }
 
 .stepper li.is-current .step-dot {
@@ -2139,9 +2168,9 @@ a.hbar-label:hover {
 }
 
 .stepper li.is-error .step-dot {
-  background: var(--danger);
-  border-color: var(--danger);
-  color: #fff;
+  background: var(--danger-strong);
+  border-color: var(--danger-strong);
+  color: var(--on-primary);
 }
 
 .stepper li.is-done .step-label,
@@ -2630,7 +2659,7 @@ a.hbar-label:hover {
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(16, 24, 40, 0.42);
+  background: var(--backdrop);
 }
 
 .modal {
@@ -2802,7 +2831,7 @@ a.hbar-label:hover {
   border-left-color: var(--seg-warning);
 }
 .toast-aviso > .icon {
-  color: #b88317;
+  color: var(--warning-icon);
 }
 .toast-info > .icon {
   color: var(--info);
@@ -2888,7 +2917,7 @@ a.hbar-label:hover {
     position: fixed;
     inset: 0;
     z-index: 35;
-    background: rgba(16, 24, 40, 0.35);
+    background: var(--overlay);
   }
 
   .main {
@@ -3282,7 +3311,7 @@ a.hbar-label:hover {
     position: fixed;
     inset: 0;
     z-index: 35;
-    background: rgba(16, 24, 40, 0.35);
+    background: var(--overlay);
   }
 
   .main {
@@ -3635,7 +3664,7 @@ a.hbar-label:hover {
   }
 
   .table-wrap.as-cards .table tr.row-highlight {
-    background: #fffcf3;
+    background: var(--row-highlight);
   }
 
   .table-wrap.as-cards .table tr.row-highlight td,
@@ -3831,4 +3860,105 @@ a.hbar-label:hover {
   white-space: normal;
   text-align: center;
   line-height: 1.3;
+}
+
+/* =============================================================================
+   Modo escuro
+   Mesma identidade do tema claro: superfícies em azul-marinho profundo (não preto),
+   azul como destaque, cores de status suavizadas para fundo escuro.
+   Aplicado só na tela — a impressão de relatórios continua sempre clara.
+   ========================================================================== */
+
+@media screen {
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --bg: #0e1520;
+    --surface: #151e2b;
+    --surface-2: #192331;
+    --surface-3: #1f2a39;
+    --border: #263345;
+    --border-strong: #35455b;
+
+    --text: #e4e9ef;
+    --text-2: #b4bfcc;
+    --muted: #8b98a9;
+
+    --primary: #8fb4e3;
+    --primary-hover: #a6c4eb;
+    --primary-50: #172638;
+    --primary-100: #233a57;
+    --primary-200: #36557d;
+
+    --success: #5cc28f;
+    --success-bg: #12271d;
+    --success-border: #1f4733;
+    --warning: #e3b55c;
+    --warning-bg: #2a2211;
+    --warning-border: #4d3d1b;
+    --danger: #f08a8a;
+    --danger-bg: #2c1618;
+    --danger-border: #58292c;
+    --info: #8fb4e3;
+    --info-bg: #142338;
+    --info-border: #26405f;
+    --neutral: #a5b0be;
+    --neutral-bg: #1e2835;
+    --neutral-border: #2f3c4d;
+
+    /* Validadas contra o fundo escuro (faixa de luminosidade e daltonismo). */
+    --chart-1: #5a8dcf;
+    --chart-grid: #222e3d;
+    --seg-info: #4d86cc;
+    --seg-success: #2f9c65;
+    --seg-warning: #b8892c;
+    --seg-neutral: #5b6a7e;
+
+    --primary-strong: #3a679f;
+    --primary-strong-hover: #4675b0;
+    --on-primary: #ffffff;
+    --danger-strong: #b54242;
+    --danger-strong-hover: #c34f4f;
+    --success-strong: #2a7a52;
+    --success-strong-hover: #31885d;
+
+    --row-highlight: #1e1f1c;
+    --notice-info-text: #c5d8ef;
+    --notice-warning-text: #ecd39f;
+    --notice-danger-text: #f3baba;
+    --warning-icon: #e3b55c;
+    --backdrop: rgba(2, 6, 12, 0.66);
+    --overlay: rgba(2, 6, 12, 0.55);
+    --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b98a9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 14px 36px rgba(0, 0, 0, 0.55);
+    --focus: 0 0 0 3px rgba(143, 180, 227, 0.35);
+  }
+
+  /* Placas: fundo claro como uma placa real, legível nos dois temas. */
+  :root[data-theme="dark"] .plate {
+    background: #eef2f7;
+    color: #16202c;
+    border-color: #5b6b80;
+    border-top-color: #2f5f96;
+  }
+
+  /* Botão bloqueado e linha de cartão ativa com contraste suficiente no escuro. */
+  :root[data-theme="dark"] .btn.is-locked {
+    border-color: var(--border-strong);
+  }
+}
+
+/* Botão de alternar tema (ícone de lua no claro, sol no escuro). */
+.theme-btn .icon-sol {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-btn .icon-lua {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-btn .icon-sol {
+  display: block;
 }

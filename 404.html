@@ -6,6 +6,8 @@
     <title>Página não encontrada · Vieira | Gestão Operacional</title>
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <meta name="color-scheme" content="light dark" />
+    <script src="/js/tema-inicial.js"></script>
     <style>
       :root {
         --bg: #f5f6f8;
@@ -13,7 +15,19 @@
         --border: #e4e7ec;
         --text: #1f2933;
         --muted: #667085;
-        --primary: #1d3a5f;
+        --marca: #1d3a5f;
+        --botao: #1d3a5f;
+        color-scheme: light;
+      }
+      :root[data-theme="dark"] {
+        --bg: #0e1520;
+        --surface: #151e2b;
+        --border: #263345;
+        --text: #e4e9ef;
+        --muted: #8b98a9;
+        --marca: #8fb4e3;
+        --botao: #3a679f;
+        color-scheme: dark;
       }
       * {
         box-sizing: border-box;
@@ -42,7 +56,7 @@
       .marca {
         margin: 0 0 18px;
         font-weight: 700;
-        color: var(--primary);
+        color: var(--marca);
       }
       h1 {
         margin: 0 0 8px;
@@ -56,7 +70,7 @@
         display: inline-block;
         padding: 9px 16px;
         border-radius: 6px;
-        background: var(--primary);
+        background: var(--botao);
         color: #fff;
         font-weight: 600;
         text-decoration: none;

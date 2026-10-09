@@ -47,6 +47,16 @@ A interface é responsiva de 320 px (celular pequeno) a monitores largos, sem ro
 
 Além dos pontos de quebra, `js/responsivo.js` mede o espaço real: se uma tabela não couber no contêiner, ela passa a ser exibida em cartões; se as abas não couberem, viram uma grade.
 
+### Modo escuro
+
+O botão com ícone de lua/sol no cabeçalho alterna entre o modo claro e o escuro. O modo escuro mantém a identidade visual: superfícies em azul-marinho profundo (não preto), azul como cor de destaque e as mesmas cores de status, ajustadas para fundo escuro.
+
+- Na primeira visita, segue o tema do sistema (Windows, macOS, Android, iOS) e acompanha mudanças em tempo real.
+- Depois de usar o botão, a escolha fica salva neste navegador. Ela é separada dos dados da demonstração e não é apagada por "Restaurar dados da demonstração".
+- O tema é aplicado antes de a página aparecer, sem "piscar" branco ao abrir.
+- Relatórios impressos saem sempre no tema claro.
+- O contraste de todos os textos atende ao nível AA de acessibilidade (WCAG) nos dois temas, e as cores dos gráficos foram validadas para leitura por pessoas com daltonismo.
+
 ### Publicar na Vercel
 
 O projeto é um site estático: **não tem etapa de build nem dependências**. A Vercel publica a pasta como está.
@@ -189,6 +199,8 @@ iniciar-demo.bat         Atalho para Windows
 css/styles.css           Identidade visual, responsividade e impressão
 assets/favicon.svg       Ícone da aba
 js/boot.js               Aviso ao abrir o index.html direto do disco
+js/tema-inicial.js       Aplica o tema claro/escuro antes da primeira pintura
+js/tema.js               Botão de alternância e memória do tema escolhido
 js/app.js                Inicialização, menu, cabeçalho, perfis, notificações, restauração
 js/router.js             Rotas por hash (#/pagina/identificador?filtro=valor)
 js/responsivo.js         Ajuste automático de tabelas (cartões) e abas (grade) ao espaço disponível
@@ -235,3 +247,5 @@ Testes automatizados de ponta a ponta foram executados no Microsoft Edge (modo h
 Resultado: 44 de 44 verificações aprovadas, sem erros de JavaScript no console.
 
 **Auditoria de responsividade:** 45 telas, abas, modais, formulários e menus foram verificados automaticamente em 25 larguras (320, 360, 390, 414, 480, 600, 667, 768, 820, 844, 900, 932, 960, 1024, 1100, 1180, 1199, 1200, 1279, 1280, 1366, 1440, 1600, 1920 e 2560 px). Nenhum elemento ultrapassa a tela, nenhuma tabela ou aba precisa de rolagem lateral e nenhum texto de botão, título ou indicador é cortado. As telas principais também foram revisadas por captura de tela em celular, tablet, notebook, desktop e celular na horizontal.
+
+**Modo escuro:** alternância, memória da escolha, acompanhamento do tema do sistema, ausência de "piscar" ao abrir e impressão clara foram testados automaticamente. Uma auditoria de contraste verificou cerca de 2.850 textos por tema, em 14 telas e modais, sem nenhum abaixo do mínimo WCAG AA.
